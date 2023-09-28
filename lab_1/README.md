@@ -16,5 +16,5 @@
 
 ## Дерево
 
-![bmstu-iu7-ai-andreev-lab_01-tree.drawio.png](../docs/img/bmstu-iu7-ai-andreev-lab_01-tree.drawio.png)
+![bmstu-iu7-ai-andreev-lab_01-tree drawio](https://github.com/AndreevAA/bmstu-iu7-ai/assets/58621780/215606bd-8494-4add-b050-d14469b620df)
 
