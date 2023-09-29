@@ -5,6 +5,5 @@
 
 ## Форма
 
-Форма доступна по ссылке - 
+Форма доступна по ссылке - https://forms.yandex.ru/u/6515d5dd90fa7bfa92737e8c/
 
-custom-display-iframe(link="https://github.com/AndreevAA/bmstu-iu7-ai/blob/main/lab_2/docs/question-list.html")
