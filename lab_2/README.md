@@ -7,4 +7,4 @@
 
 Форма доступна по ссылке - 
 
-[![Follow Mohamed El-Qassas GitHub](https://avatars.githubusercontent.com/u/49816567?s=96&v=4)](question-list.html)
+custom-display-iframe(link="https://github.com/AndreevAA/bmstu-iu7-ai/blob/main/lab_2/docs/question-list.html")
