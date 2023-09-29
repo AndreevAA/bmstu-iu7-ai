@@ -7,3 +7,7 @@
 
 Форма доступна по ссылке - https://forms.yandex.ru/u/6515d5dd90fa7bfa92737e8c/
 
+## Результаты опроса
+
+![results](https://github.com/AndreevAA/bmstu-iu7-ai/assets/58621780/a663861c-5a09-4531-a19d-78b17bfe43f3)
+
