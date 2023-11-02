@@ -11,7 +11,7 @@ from measures import *
 ods_path = "./Cities_v3.ods"
 json_path = "./Nodes.json"
 html_path = "./Table.html"
-tree_path = "./Tree.json"
+tree_path = "./Tree_more_cities.json"
 
 
 def factorize_data(data, nodes):
@@ -60,6 +60,12 @@ def factorize_data(data, nodes):
 
 	data['Расстояние от Москвы'] = data['Расстояние от Москвы'].values / max(data['Расстояние от Москвы'].values)
 	
+	data['Население'] = [elem.replace('тыс', '') for elem in data['Население']]
+	data['Население'] = data['Население'].map(lambda e: float(e))
+	data['Население'] = data['Население'].values / max(data['Население'].values)
+
+	print(data)
+
 	return data
 
 
@@ -104,12 +110,12 @@ def main():
 	write_data_to_html(data_fact, html_path)
 	#print(tabulate(data_fact, headers="keys"))
 
-	# 4 и 22 похожи
-	# 12 и 1 разные
-	# 8 и 18 - промысел
-	# 6 и 13 паломничество и гастрономия
-	Id1 = 4
-	Id2 = 22
+	# 3 и 10 похожи [[10, 1, 0], [6, 1, 0]] и [[8, 1, 0], [6, 1, 0]]
+	# 1 и 49 разные [10, 1, 0] и [2, 0]
+	# 35 и 36 - Горы [14, 4, 0] и [14, 4, 0]
+	# 18 и 37 Море и Культура [11, 4, 0] и [2, 0]
+	Id1 = 1
+	Id2 = 49
 
 	Object1 = data_fact.iloc[Id1]
 	Object2 = data_fact.iloc[Id2]
