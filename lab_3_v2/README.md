@@ -1,7 +1,18 @@
 # Лабораторная работа #3_v2
 
 ## Результат от 02.11
+
+1 и 49 (Разные)
+<img width="1173" alt="3 и 10 (Похоже)" src="https://github.com/AndreevAA/bmstu-iu7-ai/assets/58621780/c1b63c4d-f713-4790-9c9d-efffff20e427">
+
+3 и 10 (Похоже)
 <img width="1172" alt="1 и 49 (Разные)" src="https://github.com/AndreevAA/bmstu-iu7-ai/assets/58621780/1508f355-8918-45a6-b0be-376a32e9cc1c">
+
+18 и 37 (Море и культура)
+<img width="1396" alt="18 и 37 (Море и Культура)" src="https://github.com/AndreevAA/bmstu-iu7-ai/assets/58621780/aa23ed70-6c84-4894-a9fd-c93191d2dc6b">
+
+35 и 46 (Природный ланшафт)
+<img width="1153" alt="35 и 46 (Природный ландшафт)" src="https://github.com/AndreevAA/bmstu-iu7-ai/assets/58621780/aa4386f6-d0ac-4fd5-8bd3-5da3b7955da5">
 
 
 ## Комментарии от ЛЛ 03.11
