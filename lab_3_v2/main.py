@@ -8,7 +8,7 @@ from read_write_data import *
 from measures import *
 
 
-ods_path = "./Cities_v3.ods"
+ods_path = "./Cities_v4.ods"
 json_path = "./Nodes.json"
 html_path = "./Table.html"
 tree_path = "./Tree_more_cities.json"
@@ -57,12 +57,17 @@ def factorize_data(data, nodes):
 
 	del data['Область']
 	del data['Направление']
+	del data['Локация']
 
 	data['Расстояние от Москвы'] = data['Расстояние от Москвы'].values / max(data['Расстояние от Москвы'].values)
 	
 	data['Население'] = [elem.replace('тыс', '') for elem in data['Население']]
 	data['Население'] = data['Население'].map(lambda e: float(e))
 	data['Население'] = data['Население'].values / max(data['Население'].values)
+
+	data['Цена'] = data['Цена'].values / max(data['Цена'].values)
+
+
 
 	print(data)
 
