@@ -262,6 +262,16 @@ class mywindow(QMainWindow):
 		
 		properties.append("Область: " + city["Область"])
 		properties.append("Тематика: " + city["Тематика"])
+		if (city["Вид природы"] != "" and city["Вид природы"] != None):
+			properties.append("Природа: " + city["Вид природы"])
+		else:
+			properties.append("")
+
+		if (city["Историческая эпоха"] != "" and city["Историческая эпоха"] != None):
+			properties.append("Эпоха: " + city["Историческая эпоха"])
+		else:
+			properties.append("")
+
 		properties.append("Город-курорт: " + state_city_tourism)
 		properties.append("Направление: " + city["Направление"])
 		properties.append("Расстояние от Москвы: " + str(city["Расстояние от Москвы"]) + " км")

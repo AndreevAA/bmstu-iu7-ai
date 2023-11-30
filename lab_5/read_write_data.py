@@ -89,6 +89,7 @@ def factorize_data(data_full, nodes):
     data['Цена'] = data['Цена'].values / max(data['Цена'].values)
 
     print(data)
+    open("res_data.txt", "w").write(str(data))
 
     return data
 
