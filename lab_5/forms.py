@@ -162,6 +162,8 @@ def add_btn_like(frame_city, idx):
 	btn_like.setFont(font)
 	btn_like.setObjectName("btn_like_" + str(idx))
 
+	btn_like.setStyleSheet("background-color : grey")
+
 	return btn_like
 
 def add_btn_dislike(frame_city, idx):
@@ -175,6 +177,8 @@ def add_btn_dislike(frame_city, idx):
 	font.setStyleStrategy(QtGui.QFont.PreferDefault)
 	btn_dislike.setFont(font)
 	btn_dislike.setObjectName("btn_dislike_" + str(idx))
+
+	btn_dislike.setStyleSheet("background-color : black")
 
 	return btn_dislike
 
