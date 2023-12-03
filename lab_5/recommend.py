@@ -42,6 +42,7 @@ def get_measures_by_rating(data_fact, array_rating, array_disrating):
 
 
 def match_data_with_fact_data(data, measures):
+	print(measures)
 	cities = []
 	for i in range(len(measures)-1):
 		cur_idx = measures[i][1]
@@ -71,6 +72,7 @@ def recommend_by_array_likes(array_likes):
 	data, nodes, data_fact = load_data()
 
 	measures = get_measures_by_rating(data_fact, array_likes)
+	print(measures)
 	cities = match_data_with_fact_data(data, measures)
 	
 	like_cities = []
@@ -105,6 +107,10 @@ def recommend(array_likes, array_dislikes):
 		dislike_city = data.iloc[dislike]
 		dislike_cities.append(dislike_city)
 
+	print(data)
+
 	cities = match_data_with_fact_data(data, measures)
+
+	print(cities)
 
 	return like_cities, dislike_cities, cities

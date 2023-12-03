@@ -136,8 +136,9 @@ class mywindow(QMainWindow):
 		in_ring = self.ui.check_in_ring.isChecked()
 		out_ring = self.ui.check_out_ring.isChecked()
 		distance = self.ui.combo_distance.currentText()
+		price = self.ui.combo_price.currentText()
 
-		cities, another_filter = find_cities_by_filters(name, theme, in_ring, out_ring, distance)
+		cities, another_filter = find_cities_by_filters(name, theme, in_ring, out_ring, distance, price)
 		
 		self.create_frames(len(cities))
 
@@ -148,6 +149,8 @@ class mywindow(QMainWindow):
 			self.connect_like_click(filter_mode=True)
 			self.connect_dislike_click(filter_mode=True)
 			self.output_cities(cities)
+
+
 
 
 	def create_frames(self, num_frames):

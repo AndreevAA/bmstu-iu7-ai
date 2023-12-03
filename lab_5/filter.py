@@ -45,6 +45,35 @@ def get_cities_by_theme(full_cities, theme):
 
 	return res_cities
 
+def get_cities_by_price(full_cities, price):
+	res_cities = []
+
+	for city in full_cities:
+		if price == "Дешево":
+			if city['Цена'] < 6000:
+				res_cities.append(city)
+		elif price == "Нормально":
+			if city['Цена'] >= 6000 and city['Цена'] < 6800:
+				res_cities.append(city)
+
+		elif price == "Доступно":
+			if city['Цена'] >= 6800 and city['Цена'] <= 7200:
+				res_cities.append(city)
+
+		elif price == "Комфортно":
+			if city['Цена'] >= 7200 and city['Цена'] < 7800:
+				res_cities.append(city)
+
+		elif price == "Дорого":
+			if city['Цена'] >= 7800:
+				res_cities.append(city)
+
+
+		if city['Цена'] == theme:
+			res_cities.append(city)
+
+	return res_cities
+
 
 def get_cities_by_ring(full_cities, ring):
 	res_cities = []
@@ -84,12 +113,15 @@ def define_similar_theme(theme):
 	return similar_theme
 
 
-def get_cities_by_another_filter(data, theme, in_ring, out_ring, distance):
+def get_cities_by_another_filter(data, theme, in_ring, out_ring, distance, price):
 	cities = init_cities(data, data.shape[0])
 
 	if theme != 'Тематика':
 		theme = define_similar_theme(theme)
 		cities = get_cities_by_theme(cities, theme)
+
+	if price != 'Цена':
+		cities = get_cities_by_price(cities, pruce)
 
 	if in_ring:
 		cities = get_cities_by_ring(cities, '+')
@@ -103,7 +135,7 @@ def get_cities_by_another_filter(data, theme, in_ring, out_ring, distance):
 	return cities
 
 
-def find_cities_by_filters(name, theme, in_ring, out_ring, distance):
+def find_cities_by_filters(name, theme, in_ring, out_ring, distance, price):
 	data, nodes, data_fact = load_data()
 	another_filter = False
 
@@ -128,6 +160,6 @@ def find_cities_by_filters(name, theme, in_ring, out_ring, distance):
 
 	if len(cities) == 0:
 		another_filter = True
-		cities = get_cities_by_another_filter(data, theme, in_ring, out_ring, distance)
+		cities = get_cities_by_another_filter(data, theme, in_ring, out_ring, distance, price)
 
 	return cities, another_filter
