@@ -1,7 +1,7 @@
 from pandas_ods_reader import read_ods
 import random
 
-ods_path = "./Cities.ods"
+ods_path = "./Cities_v4.ods"
 
 with open("./cities.txt", encoding='utf-8') as file:
 	cities_title = [row.strip() for row in file]
