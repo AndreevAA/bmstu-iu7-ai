@@ -6,12 +6,17 @@ from cities import *
 
 morph = pymorphy2.MorphAnalyzer()
 
-attributes = [["Город", "название", "\nНапиши название."], 
-				["Тематика", "тематика", "\nУкажи тематику."], 
-				["Вид промысла", "промысел", "\nУкажи вид промысла."], 
-				["Историческая эпоха", "история", "\nУкажи историческую эпоху."], 
-				["Историческая личность", "личность", "\nУкажи историческую личность."],
-				["ЗК", "зк", "\nВходит в золотое кольцо?"]]
+attributes = [["Город", "Город", "\nНапиши название."], 
+				["Тематика", "Тематика", "\nУкажи тематику."], 
+				["Вид природы", "Вид природы", "\nУкажи вид промысла."], 
+				["Историческая эпоха", "Историческая эпоха", "\nУкажи историческую эпоху."], 
+				["Историческая личность", "Историческая личность", "\nУкажи историческую личность."],
+				["Город-курорт", "Город-курорт", "\nГород-курорт?"], 
+				["Население", "Население", "\nУкажи население города."], 
+				["Цена", "Цена", "\nУкажи цену за 1 ночь (Дешево, Нормально, Доступно, Комфортно, Дорого)."], 
+				["Направление", "Направление", "\nУкажи направление."] , 
+				["Область", "Область", "\nУкажи область."], 
+				["Локация", "Локация", "\nУкажи локацию."]]
 selected_attributes = ''
 
 step = 0
@@ -19,6 +24,18 @@ scenarios = -1
 
 def handle(phrase):
 	global step, scenarios, attributes, selected_attributes
+
+	# Вся выборка
+	res_cities = cities.iloc
+
+	locations = ""
+
+	for i in res_cities:
+		locations += i["Локация"] + " "
+
+	locations = locations[:-1]
+
+	locations = set(parser(locations))
 	
 	if len(set(phrase) & {'давать', 'привет', 'добрый', 'здравствуй', 'здравствуйте'}) != 0:
 		welcome()
@@ -39,12 +56,28 @@ def handle(phrase):
 		random_city()
 		return
 
-	if (len(set(phrase) & {'близко', 'близкий', 'далеко', 'далёкий', 'средне', 'средний', 'очень', 'не'}) != 0):
-		distance_city(phrase)
-		more()
-		return
+	count_terms_worked = 0
 
-	if (len(set(phrase) & {'какой', 'вывести', 'показать', 'найти', 'подсказать'}) != 0
+	if len(set(phrase) & {'близко', 'близкий', 'далеко', 'далёкий', 'средне', 'средний', 'очень', 'не'}) != 0:
+		res_cities = distance_city(phrase, res_cities)
+		count_terms_worked += 1
+
+	if len(set(phrase) & {'дорогой', 'дорого', 'дёшево', 'дешевый', 'нормальный', 'нормально'}) != 0:
+		res_cities = price_city(phrase, res_cities)
+		count_terms_worked += 1
+
+	print(locations)
+	print(set(phrase) & locations)
+	if len(set(phrase) & locations) != 0:
+		res_cities = locations_city(phrase, res_cities, locations)
+		count_terms_worked += 1
+
+	if count_terms_worked > 0:
+		output_all_cities(res_cities)
+		more()
+		
+
+	if len(set(phrase) & {'какой', 'вывести', 'показать', 'найти', 'подсказать'}) != 0 or (len(set(phrase) & {'какой', 'вывести', 'показать', 'найти', 'подсказать'}) != 0
 				and len(set(phrase) & {'город'}) != 0) or scenarios >= 3:
 		if scenarios == -1:
 			scenarios = 3
@@ -107,7 +140,7 @@ def handle(phrase):
 			scenarios = -1
 
 			output_cities(phrase, selected_attributes)
-			more()
+			more() 
 
 	else:
 		not_found()
